@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+/* -------------------------------------------------------------------------- */
+/*  Modern Minimal Theme — Design Tokens                                      */
+/* -------------------------------------------------------------------------- */
+:root {
+  --color-primary: #f59e0b;        /* Amber */
+  --color-primary-hover: #d97706;
+  --color-accent: #fbbf24;         /* Yellow */
+  --color-background: #0f0a05;     /* Very dark brown */
+  --color-surface: #1c1410;
+  --color-text-primary: #fffbeb;   /* Warm white */
+  --color-text-secondary: #a8a29e;
+  --color-border: rgba(245, 158, 11, 0.15);
+}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-900 text-slate-50 font-sans antialiased;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: white;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Utility */
+  .glass-panel {
+    background-color: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 font-medium rounded-lg transition-all duration-300 active:scale-95;
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.25);
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 font-medium rounded-lg transition-all duration-300 active:scale-95;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 py-20;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  }
+}
