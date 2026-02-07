@@ -1,13 +1,13 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero/Hero";
-import About from "./sections/About/About";
-import Skills from "./sections/Skills/Skills";
-import Experience from "./sections/Experience/Experience";
-import Projects from "./sections/Projects/Projects";
-import Education from "./sections/Education/Education";
-import Achievements from "./sections/Achievements/Achievements";
-import Contact from "./sections/Contact/Contact";
+const About = lazy(() => import("./sections/About/About"));
+const Skills = lazy(() => import("./sections/Skills/Skills"));
+const Experience = lazy(() => import("./sections/Experience/Experience"));
+const Projects = lazy(() => import("./sections/Projects/Projects"));
+const Education = lazy(() => import("./sections/Education/Education"));
+const Achievements = lazy(() => import("./sections/Achievements/Achievements"));
+const Contact = lazy(() => import("./sections/Contact/Contact"));
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -23,13 +23,15 @@ export default function App() {
 
       <main className="relative z-10 flex flex-col items-center w-full">
         <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Education />
-        <Achievements />
-        <Contact />
+        <Suspense fallback={<div className="h-screen" />}>
+          <About />
+          <Skills />
+          <Experience />
+          <Projects />
+          <Education />
+          <Achievements />
+          <Contact />
+        </Suspense>
       </main>
 
       <Footer />

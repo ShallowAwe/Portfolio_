@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
 import {
   FaGithub,
   FaLinkedin,
@@ -28,7 +28,8 @@ const SOCIAL_LINKS = [
 ];
 
 export default function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
   const { scrollY } = useScroll();
 
   // Parallax effects
@@ -37,17 +38,24 @@ export default function Hero() {
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
   const scale = useTransform(scrollY, [0, 300], [1, 0.9]);
 
-  // Mouse move effect
+  // Mouse move effect using MotionValues (no re-renders)
   useEffect(() => {
     const handleMouseMove = (e) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 20;
       const y = (e.clientY / window.innerHeight - 0.5) * 20;
-      setMousePosition({ x, y });
+      
+      mouseX.set(x);
+      mouseY.set(y);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [mouseX, mouseY]);
+
+  const x1 = useTransform(mouseX, (val) => val * 2);
+  const y1_mouse = useTransform(mouseY, (val) => val * 2);
+  const x2 = useTransform(mouseX, (val) => -val * 2);
+  const y2_mouse = useTransform(mouseY, (val) => -val * 2);
 
   const handleScrollToAbout = () => {
     const aboutSection = document.getElementById("about");
@@ -77,8 +85,8 @@ export default function Hero() {
         {/* Top Left Orb */}
         <motion.div
           style={{
-            x: mousePosition.x * 2,
-            y: mousePosition.y * 2,
+            x: x1,
+            y: y1_mouse,
             background:
               "color-mix(in srgb, var(--color-primary), transparent 85%)",
           }}
@@ -97,8 +105,8 @@ export default function Hero() {
         {/* Bottom Right Orb */}
         <motion.div
           style={{
-            x: -mousePosition.x * 2,
-            y: -mousePosition.y * 2,
+            x: x2,
+            y: y2_mouse,
             background:
               "color-mix(in srgb, var(--color-accent), transparent 88%)",
           }}
