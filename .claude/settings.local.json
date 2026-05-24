@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(node -e \"const si = require\\('./node_modules/react-icons/si/index.mjs'\\).toString ? null : require\\('./node_modules/react-icons/si'\\); console.log\\(Object.keys\\(si\\).filter\\(k => /sql|axios|jsonweb|hibernate|flyway|spring/i.test\\(k\\)\\).join\\('\\\\n'\\)\\);\")",
+      "Bash(node --input-type=module -e \"import * as si from 'react-icons/si'; console.log\\(Object.keys\\(si\\).filter\\(k => /sql|axios|jsonweb|hibernate|flyway|spring/i.test\\(k\\)\\).join\\('\\\\n'\\)\\);\")"
+    ]
+  }
+}

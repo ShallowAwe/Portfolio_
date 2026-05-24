@@ -3,8 +3,8 @@ import { motion, useInView } from "framer-motion";
 import {
   FaCheckCircle,
   FaBolt,
-  FaUsers,
-  FaBriefcase,
+  FaShieldAlt,
+  FaCubes,
   FaArrowRight,
 } from "react-icons/fa";
 
@@ -12,6 +12,7 @@ import {
 
 const AnimatedCounter = ({ target, suffix, duration = 2000 }) => {
   const [count, setCount] = useState(0);
+  const [done, setDone] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
@@ -31,61 +32,70 @@ const AnimatedCounter = ({ target, suffix, duration = 2000 }) => {
           requestAnimationFrame(animate);
         } else {
           setCount(target);
+          setDone(true);
         }
       };
       requestAnimationFrame(animate);
     }
   }, [isInView, target, duration]);
 
+  // If the static suffix begins with a decimal (e.g. ".8%"), only render it
+  // once the counter has finished. Otherwise the animation reads "0.8%, 1.8%..."
+  const isDecimalSuffix = suffix.startsWith(".");
+  const displaySuffix = isDecimalSuffix && !done ? "%" : suffix;
+
   return (
     <span ref={ref}>
       {count}
-      {suffix}
+      {displaySuffix}
     </span>
   );
 };
 
 const ACHIEVEMENTS = [
   {
-    metric: "99.8%",
-    target: 99, // Integer for counter
-    suffix: ".8%", // Static suffix
-    label: "Transaction Success",
+    metric: "50%+",
+    target: 50,
+    suffix: "%+",
+    label: "Audit Effort Reduced",
     description:
-      "Achieved in E-Commerce application through robust error handling",
-    icon: FaCheckCircle,
-  },
-  {
-    metric: "45%",
-    target: 45,
-    suffix: "%",
-    label: "Performance Boost",
-    description: "Reduced app startup time through optimized state management",
+      "Cut manual audit preparation for enterprise QMS clients via automated audit trails and compliance alerts",
     icon: FaBolt,
   },
   {
-    metric: "500+",
-    target: 500,
+    metric: "16+",
+    target: 16,
     suffix: "+",
-    label: "Active Users",
-    description: "Serving users across multiple production applications",
-    icon: FaUsers,
+    label: "Secured Modules",
+    description:
+      "CAPA, NCR, Document Control, Risk Assessment and more — protected by JWT/OAuth 2.0 and fine-grained RBAC",
+    icon: FaShieldAlt,
   },
   {
-    metric: "10+",
-    target: 10,
-    suffix: "+",
-    label: "Projects Delivered",
-    description: "Successfully completed and deployed to production",
-    icon: FaBriefcase,
+    metric: "8",
+    target: 8,
+    suffix: "",
+    label: "Relational Tables",
+    description:
+      "Architected with hierarchical RBAC, soft deletes, and audit logging in the Session-Based Issue Tracker",
+    icon: FaCubes,
+  },
+  {
+    metric: "100%",
+    target: 100,
+    suffix: "%",
+    label: "End-to-End Owned",
+    description:
+      "Requirements, schema, implementation, testing, and CI/CD deployment — shipped as a single owner",
+    icon: FaCheckCircle,
   },
 ];
 
 const ADDITIONAL_STATS = [
-  { value: "95%", label: "Code Quality" },
-  { value: "60%", label: "Faster Sync" },
-  { value: "Zero", label: "Missed Deadlines" },
-  { value: "100%", label: "Client Satisfaction" },
+  { value: "JWT", label: "+ Refresh Rotation" },
+  { value: "RBAC", label: "Hierarchical" },
+  { value: "Offline-First", label: "Dexie + R2 Sync" },
+  { value: "Multi-Tenant", label: "QMS SaaS" },
 ];
 
 export default function Achievements() {
@@ -245,7 +255,7 @@ export default function Achievements() {
 
                 {/* Label */}
                 <h3
-                  className="text-lg font-semibold mb-3 min-h-[3.5rem] flex items-center justify-center"
+                  className="text-lg font-semibold mb-3 min-h-14 flex items-center justify-center"
                   style={{ color: "var(--color-text-primary)" }}
                 >
                   {achievement.label}

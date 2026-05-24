@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {
   FaGithub,
   FaExternalLinkAlt,
-  FaMobileAlt,
+  FaShieldAlt,
   FaServer,
   FaCode,
   FaArrowRight,
@@ -13,38 +13,38 @@ import {
 const PROJECTS = [
   {
     id: 1,
-    title: "E-Commerce Mobile Application",
-    category: "Mobile Development",
-    icon: FaMobileAlt,
-    tech: ["Flutter", "Firebase", "Razorpay", "Hive"],
+    title: "QMS Web — Quality Management System",
+    category: "Production · Full-Stack",
+    icon: FaServer,
+    tech: ["React 18", "Spring Boot", "MSSQL", "Cloudflare R2", "Dexie.js"],
     description:
-      "Cross-platform shopping app featuring secure payment integration, offline-first architecture with Hive caching, and a comprehensive product catalog serving 1000+ items.",
+      "Full-stack ISO 15189-compliant Quality Management platform spanning 16 modules — CAPA, Non-Conformance, Document Library, Risk Matrix, Audits, Vendor Qualification. Fine-grained RBAC via a custom usePermissions hook with field-level UI visibility. Secure document storage and versioning through Cloudflare Workers + R2 with UUID-based file management, plus offline-first architecture using Dexie.js with automatic cloud synchronization.",
     metrics: [
-      { label: "Users", value: "500+" },
-      { label: "Success Rate", value: "99.8%" },
-      { label: "Faster Boot", value: "45%" },
+      { label: "Modules", value: "16+" },
+      { label: "Audit Effort", value: "-50%" },
+      { label: "Status", value: "Live" },
     ],
     links: {
       github: "https://github.com/ShallowAwe",
-      live: null, // Add URL if available
+      live: null,
     },
   },
   {
     id: 2,
-    title: "Full-Stack Expense Tracker",
-    category: "Backend System",
-    icon: FaServer,
-    tech: ["Spring Boot", "MongoDB", "OAuth2", "React"],
+    title: "Session-Based Issue Tracker",
+    category: "Personal · Backend",
+    icon: FaShieldAlt,
+    tech: ["Spring Boot", "PostgreSQL", "JWT", "Flyway"],
     description:
-      "Comprehensive expense management system with OAuth2 authentication, real-time synchronization, and interactive analytics dashboard handling high-volume transaction records.",
+      "Secure team-collaboration and issue-tracking backend built with Spring Boot and PostgreSQL. Implements JWT authentication with refresh-token rotation and automatic token-family revocation on reuse detection. Hierarchical RBAC, normalized relational schemas, soft deletes, and audit logging across 8 database tables.",
     metrics: [
-      { label: "Records", value: "10K+" },
-      { label: "Latency", value: "<1s" },
-      { label: "Sync", value: "Real-time" },
+      { label: "DB Tables", value: "8" },
+      { label: "Auth", value: "JWT" },
+      { label: "RBAC", value: "Hierarchical" },
     ],
     links: {
       github: "https://github.com/ShallowAwe",
-      live: "https://github.com/ShallowAwe", // Placeholder for demo
+      live: null,
     },
   },
 ];
@@ -92,6 +92,7 @@ export default function Projects() {
         aria-hidden="true"
       />
 
+      <div className="max-w-7xl mx-auto">
       {/* Header Section */}
       <div className="mb-16">
         <motion.div
@@ -126,8 +127,8 @@ export default function Projects() {
           className="max-w-2xl text-lg leading-relaxed"
           style={{ color: "var(--color-text-secondary)" }}
         >
-          Production-ready applications demonstrating full-stack development
-          expertise, from mobile interfaces to scalable backends.
+          Production-ready applications demonstrating end-to-end full-stack
+          ownership — from secure backends to responsive React interfaces.
         </motion.p>
       </div>
 
@@ -324,6 +325,7 @@ export default function Projects() {
           <FaArrowRight size={12} />
         </a>
       </motion.div>
+      </div>
     </section>
   );
 }

@@ -2,8 +2,6 @@
 
 A modern, responsive portfolio website showcasing my work as a Full-Stack Developer. Built with React, Framer Motion, and Tailwind CSS.
 
-![Portfolio Preview](./preview.png)
-
 ## ✨ Features
 
 - **Responsive Design** - Fully responsive across all devices (mobile, tablet, desktop)
@@ -183,17 +181,13 @@ The site includes comprehensive SEO optimization:
 - Sufficient color contrast ratios
 - Focus indicators for interactive elements
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
 ## 👤 Author
 
 **Rudrankur Indurkar**
 
 - GitHub: [@ShallowAwe](https://github.com/ShallowAwe)
 - LinkedIn: [Rudrankur Indurkar](https://linkedin.com/in/rudrankur-indurkar)
-- Email: rudrankurindurkar@gmail.com
+- Email: rudraindurkar670@gmail.com
 
 ## 🙏 Acknowledgments
 

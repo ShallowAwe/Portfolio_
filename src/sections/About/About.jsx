@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 // Importing icons makes the code much cleaner
 import {
   FaCode,
-  FaMobileAlt,
+  FaShieldAlt,
   FaRocket,
   FaBriefcase,
   FaCheckCircle,
@@ -33,21 +33,21 @@ const STATS = [
 const HIGHLIGHTS = [
   {
     icon: FaRocket,
-    title: "Performance First",
+    title: "End-to-End Ownership",
     description:
-      "Building lightning-fast applications with optimized code and best practices.",
+      "Requirements, schema design, implementation, testing, and CI/CD — shipped as a single owner.",
   },
   {
-    icon: FaMobileAlt,
-    title: "Mobile Expertise",
+    icon: FaShieldAlt,
+    title: "Security-First",
     description:
-      "Specializing in cross-platform Flutter apps with native performance.",
+      "JWT, OAuth 2.0, refresh-token rotation, and fine-grained RBAC across multi-tenant SaaS.",
   },
   {
     icon: FaCode,
-    title: "Clean Design",
+    title: "Offline-First Architecture",
     description:
-      "Creating intuitive user interfaces that users love to interact with.",
+      "Resilient client-side caching with Dexie.js and automatic cloud synchronization.",
   },
 ];
 
@@ -114,7 +114,8 @@ export default function About() {
             <span
               className="inline-block px-4 py-1.5 mb-4 text-sm font-medium rounded-full"
               style={{
-                backgroundColor: "rgba(245, 158, 11, 0.1)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--color-primary), transparent 90%)",
                 color: "var(--color-primary)",
                 border: "1px solid var(--color-border)",
               }}
@@ -183,34 +184,35 @@ export default function About() {
                 className="text-lg leading-relaxed"
                 style={{ color: "var(--color-text-secondary)" }}
               >
-                I'm a passionate{" "}
+                I'm a{" "}
                 <span
                   style={{ color: "var(--color-primary)", fontWeight: 600 }}
                 >
                   Full-Stack Developer
                 </span>{" "}
-                with expertise in building scalable mobile and web applications.
-                My journey in software development has been driven by a love for
-                creating elegant solutions to complex problems.
+                with 1+ year of professional experience building secure,
+                scalable applications. I work across{" "}
+                <span
+                  style={{ color: "var(--color-primary)", fontWeight: 600 }}
+                >
+                  Java / Spring Boot
+                </span>{" "}
+                on the backend and{" "}
+                <span
+                  style={{ color: "var(--color-primary)", fontWeight: 600 }}
+                >
+                  React 18 + Redux Toolkit
+                </span>{" "}
+                on the frontend.
               </p>
               <p
                 className="text-lg leading-relaxed"
                 style={{ color: "var(--color-text-secondary)" }}
               >
-                I specialize in{" "}
-                <span
-                  style={{ color: "var(--color-primary)", fontWeight: 600 }}
-                >
-                  Flutter
-                </span>
-                ,{" "}
-                <span
-                  style={{ color: "var(--color-primary)", fontWeight: 600 }}
-                >
-                  Spring Boot
-                </span>
-                , and modern web technologies, with a strong focus on
-                performance optimization and user experience.
+                Strong foundation in authentication and authorization (JWT,
+                OAuth 2.0, RBAC), microservices, RESTful API design, and
+                offline-first synchronization. Looking for startup or enterprise
+                roles with end-to-end product ownership.
               </p>
             </motion.div>
 

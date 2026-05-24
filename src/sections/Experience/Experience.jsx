@@ -12,19 +12,27 @@ import {
 const EXPERIENCES = [
   {
     id: 1,
-    role: "Flutter / Java Developer",
-    company: "Altwise",
+    role: "Full Stack Software Developer",
+    company: "AltWise Pvt Ltd",
     location: "Pune, Maharashtra",
-    period: "June 2024 – Present",
+    period: "June 2025 – Present",
     isCurrent: true,
     achievements: [
-      "Developed 3 cross-platform mobile apps for 500+ active users with seamless Android & iOS compatibility.",
-      "Engineered responsive UI components and micro-animations, achieving 40% faster load times.",
-      "Implemented Riverpod-based state management, improving performance by 35% and reducing code complexity.",
-      "Integrated Firebase real-time services and RESTful APIs, cutting sync latency by 60%.",
-      "Led daily code reviews maintaining 95% code-quality standards and zero missed deadlines.",
+      "Designed and developed scalable Spring Boot microservices and responsive React 18 + Redux Toolkit interfaces for a multi-tenant QMS SaaS platform used by enterprise laboratory clients.",
+      "Built automated audit trails and real-time compliance alerts, reducing manual audit preparation effort by 50%+ for clients.",
+      "Enforced JWT/OAuth 2.0 authentication and fine-grained RBAC to secure 16+ modules including CAPA, NCR, Document Control, and Risk Assessment.",
+      "Executed an offline-first architecture using Dexie.js with automatic Cloudflare R2 synchronization, ensuring uninterrupted data entry in low-connectivity environments.",
+      "Owned multiple features end-to-end — requirements, database design, implementation, testing, and CI/CD deployment.",
     ],
-    techStack: ["Flutter", "Dart", "Java", "Riverpod", "Firebase", "REST API"],
+    techStack: [
+      "Java 21",
+      "Spring Boot",
+      "React 18",
+      "Redux Toolkit",
+      "MSSQL",
+      "Dexie.js",
+      "Cloudflare R2",
+    ],
   },
 ];
 
@@ -123,7 +131,7 @@ export default function Experience() {
                 <div className="flex items-start gap-4">
                   {/* Icon Box */}
                   <div
-                    className="p-3 rounded-xl mt-1 flex-shrink-0"
+                    className="p-3 rounded-xl mt-1 shrink-0"
                     style={{
                       backgroundColor:
                         "color-mix(in srgb, var(--color-primary), transparent 90%)",
@@ -208,7 +216,7 @@ export default function Experience() {
                     className="flex items-start group/item"
                   >
                     <span
-                      className="mr-3 mt-1.5 flex-shrink-0 transition-all duration-300 group-hover/item:text-[var(--color-primary)]"
+                      className="mr-3 mt-1.5 shrink-0 transition-all duration-300 group-hover/item:text-(--color-primary)"
                       style={{ color: "var(--color-text-secondary)" }}
                     >
                       <FaArrowRight size={10} />
@@ -233,7 +241,7 @@ export default function Experience() {
                 {exp.techStack.map((tech, i) => (
                   <span
                     key={i}
-                    className="text-xs font-medium px-3 py-1 rounded-lg border transition-colors hover:border-[var(--color-primary)]"
+                    className="text-xs font-medium px-3 py-1 rounded-lg border transition-colors hover:border-(--color-primary)"
                     style={{
                       backgroundColor: "var(--color-surface)",
                       borderColor: "var(--color-border)",

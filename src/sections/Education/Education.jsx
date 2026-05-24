@@ -13,11 +13,11 @@ import {
 const EDUCATION_DATA = [
   {
     id: 1,
-    degree: "Bachelor of Engineering in Computer Science",
-    university: "Dr. Babasaheb Ambedkar Marathwada University",
+    degree: "B.E. in Computer Science & Engineering",
+    university: "Dr. Babasaheb Ambedkar Marathwada University (BAMU)",
     location: "Aurangabad, MH",
-    period: "May 2019 – Nov 2023",
-    gpa: "7.97",
+    period: "2019 – 2023",
+    gpa: "7.9",
     maxGpa: "10.0",
     courses: [
       "Data Structures & Algorithms",
@@ -168,7 +168,7 @@ export default function Education() {
                         className="flex items-center gap-2 pl-4"
                         style={{ color: "var(--color-text-secondary)" }}
                       >
-                        <FaUniversity className="text-[var(--color-primary)]" />
+                        <FaUniversity className="text-(--color-primary)" />
                         <span className="font-medium">{edu.university}</span>
                       </div>
                       <div
@@ -192,7 +192,7 @@ export default function Education() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.4 }}
-                    className="flex-shrink-0"
+                    className="shrink-0"
                   >
                     <div
                       className="inline-flex flex-col items-center justify-center p-4 rounded-2xl min-w-[120px]"

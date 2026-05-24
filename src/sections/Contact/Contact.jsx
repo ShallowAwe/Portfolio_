@@ -6,7 +6,10 @@ import {
   FaLinkedin,
   FaGithub,
   FaMapMarkerAlt,
+  FaPhone,
 } from "react-icons/fa";
+
+const CONTACT_EMAIL = "rudraindurkar670@gmail.com";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -14,25 +17,22 @@ export default function Contact() {
     email: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setIsSubmitting(false);
+    const { name, email, message } = formState;
+    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+    const body = encodeURIComponent(
+      `${message}\n\n— ${name}\nReply to: ${email}`
+    );
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
     setIsSubmitted(true);
     setFormState({ name: "", email: "", message: "" });
-
-    // Reset success message after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000);
   };
 
@@ -110,24 +110,31 @@ export default function Contact() {
                 delay={0}
               />
               <ContactCard
+                icon={FaPhone}
+                title="Phone"
+                value="+91 8459132835"
+                href="tel:+918459132835"
+                delay={0.1}
+              />
+              <ContactCard
                 icon={FaLinkedin}
                 title="LinkedIn"
                 value="Connect on LinkedIn"
-                href="https://linkedin.com/in/Rudrankur_Indurkar"
-                delay={0.1}
+                href="https://linkedin.com/in/rudrankur-indurkar"
+                delay={0.2}
               />
               <ContactCard
                 icon={FaGithub}
                 title="GitHub"
                 value="Follow on GitHub"
                 href="https://github.com/ShallowAwe"
-                delay={0.2}
+                delay={0.3}
               />
               <ContactCard
                 icon={FaMapMarkerAlt}
                 title="Location"
-                value="Aurangabad, Maharashtra"
-                delay={0.3}
+                value="Pune, Maharashtra"
+                delay={0.4}
               />
             </div>
           </motion.div>
@@ -172,12 +179,14 @@ export default function Contact() {
                 />
                 <div className="space-y-2">
                   <label
-                    className="text-sm font-medium ml-1"
+                    htmlFor="contact-message"
+                    className="text-sm font-medium ml-1 block"
                     style={{ color: "var(--color-text-secondary)" }}
                   >
                     Message
                   </label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     required
                     rows="4"
@@ -189,18 +198,16 @@ export default function Contact() {
                       backgroundColor: "var(--color-surface-glass)",
                       border: "1px solid var(--color-border)",
                       color: "var(--color-text-primary)",
-                      // dynamic styling for focus state is handled by tailwind classes usually,
-                      // but inline styles for vars:
                       "--tw-ring-color": "var(--color-primary)",
                     }}
                   />
                 </div>
 
                 <motion.button
+                  type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  disabled={isSubmitting}
-                  className="w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all duration-300"
                   style={{
                     backgroundColor: isSubmitted
                       ? "#10b981"
@@ -209,30 +216,9 @@ export default function Contact() {
                     boxShadow: "0 4px 15px -3px var(--color-shadow)",
                   }}
                 >
-                  {isSubmitting ? (
-                    <svg
-                      className="animate-spin h-5 w-5 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                  ) : isSubmitted ? (
+                  {isSubmitted ? (
                     <>
-                      Message Sent! <FaPaperPlane />
+                      Opened in your mail app <FaPaperPlane />
                     </>
                   ) : (
                     <>
@@ -266,7 +252,7 @@ function ContactCard({ icon: Icon, title, value, href, delay }) {
       }}
     >
       <div
-        className="w-12 h-12 rounded-lg flex items-center justify-center transition-colors duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white"
+        className="w-12 h-12 rounded-lg flex items-center justify-center transition-colors duration-300 group-hover:bg-(--color-primary) group-hover:text-white"
         style={{
           backgroundColor:
             "color-mix(in srgb, var(--color-primary), transparent 90%)",
@@ -309,15 +295,18 @@ function InputGroup({
   onChange,
   placeholder,
 }) {
+  const inputId = `contact-${name}`;
   return (
     <div className="space-y-2">
       <label
-        className="text-sm font-medium ml-1"
+        htmlFor={inputId}
+        className="text-sm font-medium ml-1 block"
         style={{ color: "var(--color-text-secondary)" }}
       >
         {label}
       </label>
       <input
+        id={inputId}
         type={type}
         name={name}
         required

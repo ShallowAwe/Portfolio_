@@ -12,7 +12,7 @@ const SOCIALS = [
   },
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/Rudrankur_Indurkar",
+    url: "https://linkedin.com/in/rudrankur-indurkar",
     icon: FaLinkedin,
   },
   {

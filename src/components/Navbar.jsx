@@ -50,7 +50,7 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "glass-panel shadow-lg border-b border-[var(--color-border)] py-3"
+          ? "glass-panel shadow-lg border-b border-(--color-border) py-3"
           : "bg-transparent py-5"
       }`}
     >
@@ -58,14 +58,14 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#hero" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[var(--color-primary)] group-hover:shadow-[0_0_15px_var(--color-primary)] transition-all duration-300">
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-(--color-primary) group-hover:shadow-[0_0_15px_var(--color-primary)] transition-all duration-300">
               <img
                 src={profileImage}
                 alt="Profile"
                 className="w-full h-full object-cover"
               />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-linear-to-r from-(--color-primary) to-(--color-accent) bg-clip-text text-transparent">
               RI
             </span>
           </a>
@@ -76,11 +76,11 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="relative text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors font-medium text-sm group"
+                className="relative text-(--color-text-secondary) hover:text-(--color-primary) transition-colors font-medium text-sm group"
               >
                 {item.name}
                 {/* Hover Underline Effect */}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--color-primary)] transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-(--color-primary) transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </div>
@@ -90,7 +90,7 @@ export default function Navbar() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="relative w-10 h-10 rounded-full flex items-center justify-center transition-colors hover:bg-[var(--color-surface-hover)] border border-transparent hover:border-[var(--color-border)]"
+              className="relative w-10 h-10 rounded-full flex items-center justify-center transition-colors hover:bg-(--color-surface-hover) border border-transparent hover:border-(--color-border)"
               aria-label="Toggle Theme"
             >
               <AnimatePresence mode="wait">
@@ -159,8 +159,10 @@ export default function Navbar() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)] rounded-lg transition-colors"
+              className="md:hidden p-2 text-(--color-text-primary) hover:bg-(--color-surface-hover) rounded-lg transition-colors"
               aria-label="Toggle Menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               <svg
                 className="w-6 h-6"
@@ -188,10 +190,11 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden overflow-hidden border-b border-[var(--color-border)]"
+            className="md:hidden overflow-hidden border-b border-(--color-border)"
             style={{
               backgroundColor: "var(--color-background)",
               // Ensures glass effect works on mobile menu too if needed
@@ -204,7 +207,7 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-[var(--color-text-primary)] font-medium hover:bg-[var(--color-surface-hover)] hover:pl-6 rounded-lg transition-all duration-300"
+                  className="block px-4 py-3 text-(--color-text-primary) font-medium hover:bg-(--color-surface-hover) hover:pl-6 rounded-lg transition-all duration-300"
                 >
                   {item.name}
                 </a>

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
 import {
   FaGithub,
   FaLinkedin,
   FaEnvelope,
   FaArrowRight,
-  FaChevronDown,
+  FaDownload,
 } from "react-icons/fa";
 
 // --- Data Defined Outside ---
@@ -18,7 +18,7 @@ const SOCIAL_LINKS = [
   {
     icon: FaLinkedin,
     label: "LinkedIn",
-    href: "https://linkedin.com/in/Rudrankur_Indurkar",
+    href: "https://www.linkedin.com/in/rudraindurkar01",
   },
   {
     icon: FaEnvelope,
@@ -65,7 +65,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 overflow-hidden pb-20 pt-32"
+      className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 overflow-hidden pb-20 pt-32"
       style={{ backgroundColor: "var(--color-background)" }}
     >
       {/* --- Animated Background Elements --- */}
@@ -149,7 +149,7 @@ export default function Hero() {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
               </span>
               <span style={{ color: "var(--color-text-secondary)" }}>
-                Available for Freelance & Full-time
+                Open to startup & enterprise roles
               </span>
             </div>
           </motion.div>
@@ -203,8 +203,8 @@ export default function Hero() {
               Rudrankur Indurkar
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full" />
             </span>
-            . A Full-Stack Developer creating scalable, human-centered
-            applications with modern technologies.
+            . A Full-Stack Developer building secure, scalable applications
+            with Java/Spring Boot and React.js — end-to-end product ownership.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -222,6 +222,17 @@ export default function Hero() {
             >
               View My Work
               <FaArrowRight size={14} />
+            </motion.a>
+
+            <motion.a
+              href="/Rudrankur_Indurkar_Resume.pdf"
+              download
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-secondary w-full sm:w-auto min-w-[180px] flex items-center justify-center gap-2"
+            >
+              Download CV
+              <FaDownload size={14} />
             </motion.a>
 
             <motion.a
@@ -260,7 +271,7 @@ export default function Hero() {
               >
                 <social.icon
                   size={20}
-                  className="hover:text-[var(--color-primary)] transition-colors"
+                  className="hover:text-(--color-primary) transition-colors"
                 />
               </motion.a>
             ))}
